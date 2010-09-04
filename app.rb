@@ -17,6 +17,22 @@ get '/' do
 end
 
 get '/condition/:condition' do
+  # Clear = clear
+  # Cloudy = cloudy
+  # Flurries = flurries
+  # Fog = fog
+  # Hazy = hazy
+  # Mostly Cloudy = mostlycloudy
+  # Mostly Sunny = mostlysunny
+  # Partly Cloudy = partlycloudy
+  # Partly Sunny = partlysunny
+  # Rain = rain
+  # Sleet = sleet
+  # Snow = snow
+  # Sunny = sunny
+  # Thunderstorms = tstorms
+  # Unknown = unknown
+
   begin
     haml params[:condition].to_sym, :locals => { :condition => params[:condition] }
   rescue Errno::ENOENT
