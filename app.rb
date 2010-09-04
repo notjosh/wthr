@@ -9,7 +9,6 @@ configure :development do
   use Rack::Reloader
 end
 
-Barometer.google_geocode_key = "ABQIAAAA4eK5taxNtN43UGOupiIWuRQt4fVt5qHCF7oVdAJjNR-dz90u_BR9U8VZDEO21NWuphXw4fjcOj-xig"
 set :haml, {:format => :html5 }
 
 get '/' do
