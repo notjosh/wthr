@@ -1,1 +1,32 @@
-hey bro world
+#welcome
+  %h1 wthr
+  %p where do you do?
+  %form(action='/location' method='GET' id='omgform')
+    %input(type='text' name='omgwhere' id='omgwhere')
+    %input(type='submit')
+
+:javascript
+  if (navigator.geolocation) 
+  {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var latitude = position.coords.latitude;
+      var longitude = position.coords.longitude;
+
+      var omgwhere = document.getElementById('omgwhere');
+      if ('' == omgwhere.value) {
+        omgwhere.value = latitude + ',' + longitude;
+      }
+    });
+  }
+
+  document.getElementById('omgform').addEventListener('submit', omgsubmit, false);
+
+  function omgsubmit(e) {
+    e.preventDefault();
+
+    var omgwhere = document.getElementById('omgwhere');
+    window.location = e.target.action + '/' + encodeURIComponent(omgwhere.value);
+
+    console.log(e.target.action);
+    console.log(window.location);
+  }

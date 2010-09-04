@@ -24,9 +24,12 @@ get '/condition/:condition' do
   end
 end
 
-get '/weather/:omgwhere' do
-  Barometer.config = { 1 => [:google, :yahoo] }
-  barometer = Barometer.new(params[:omgwhere])
+get '/location/:omgwhere' do
+  @omgwhere = params[:omgwhere]
+  puts params[:omgwhere]
+
+  Barometer.config = { 1 => [:wunderground] }
+  barometer = Barometer.new(@omgwhere)
   weather = barometer.measure
 
   haml :omgwhere, :locals => { :weather => weather }

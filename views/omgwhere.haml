@@ -1,5 +1,22 @@
 %p
+  at
+  = @omgwhere
+  - if not nil == weather.source(:wunderground)
+    aka
+    - if not nil == weather.source(:wunderground).location.name
+      = "#{weather.source(:wunderground).location.name},"
+    - else
+      = weather.source(:wunderground).location.city
+      = "#{weather.source(:wunderground).location.state_code},"
+    = weather.source(:wunderground).location.country_code
+
+%p
+  %strong
+    - if (defined?(weather.current.condition) && nil != weather.current.condition)
+      it is
+      = weather.current.condition.downcase
+      and
   it is
-  %strong=weather.current.condition.downcase
-  and it is
-  %strong=weather.night? ? 'night' : 'day'
+  %strong= weather.night? ? 'night' : 'day'
+  with icon
+  %strong= weather.current.icon
